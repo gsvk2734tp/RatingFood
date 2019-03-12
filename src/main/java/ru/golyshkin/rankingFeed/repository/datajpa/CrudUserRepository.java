@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public interface CrudUserRepository extends JpaRepository<User, Integer> {
 
+    @Override
     void deleteById(Integer id);
 
     @Override

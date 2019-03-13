@@ -2,11 +2,13 @@ package ru.golyshkin.rankingFeed.repository.datajpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Repository;
 import ru.golyshkin.rankingFeed.model.Feed;
 import ru.golyshkin.rankingFeed.repository.FeedRepository;
 
 import java.util.List;
 
+@Repository
 public class DataJpaFeedImpl implements FeedRepository {
     private static final Sort SORT_RANKING = new Sort(Sort.Direction.DESC, "ranking");
 

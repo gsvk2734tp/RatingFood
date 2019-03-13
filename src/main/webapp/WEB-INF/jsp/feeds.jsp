@@ -5,6 +5,7 @@
 <html>
 <jsp:include page="headTag.jsp"/>
 <link href="<c:url value="/resources/css/feedPage.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/scrollbar.css"/>" rel="stylesheet">
 <body>
 <!-- FONTS -->
 <link href='https://fonts.googleapis.com/css?family=Raleway:200,300,400' rel='stylesheet' type='text/css'>
@@ -21,17 +22,18 @@
 <div class="side-nav">
     <h2 class="abs-center nav-header">Nav</h2>
     <ul class="abs-center nav-options">
+        <li class="rela-block nav-link the-home">Home page</li>
         <li class="rela-block nav-link the-menu">The Menu</li>
-        <li class="rela-block nav-link">About Us</li>
-        <li class="rela-block nav-link">Stories</li>
-        <li class="rela-block nav-link">Locations</li>
+        <li class="rela-block nav-link">Beer</li>
+        <li class="rela-block nav-link">Food</li>
+        <li class="rela-block nav-link">Profile</li>
         <li class="rela-block nav-link">Contact Us</li>
     </ul>
 </div>
 
 <div class="rela-block top-section">
     <div class="abs-center header-container">
-        <h1 class="abs-center food-header">Bramblebee's</h1>
+        <h1 class="abs-center food-header">Beer Shop</h1>
         <div class=" abs-center eye left"></div>
         <div class=" abs-center eye right"></div>
         <div class=" abs-center mouth"></div>
@@ -89,4 +91,6 @@
 
 </body>
 <script src="${pageContext.request.contextPath}/resources/js/feedPage.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/scrollbar.js"></script>
+
 </html>

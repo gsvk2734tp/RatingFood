@@ -17,6 +17,11 @@ public class RootController {
         return "index";
     }
 
+    @GetMapping("/index")
+    public String home() {
+        return "index";
+    }
+
     @GetMapping(value = "/users")
     public String login() {
         return "users";

@@ -433,13 +433,14 @@ h2 {
     max-width: 900px;
 }
 .words-section.tea {
-    background: url("https://s-media-cache-ak0.pinimg.com/564x/d0/33/98/d03398a1a49061d02a55bdb1924baa56.jpg") left no-repeat;
-    background-color: #e7e7e7;
+    background: url("../images/shop4.jpg") left no-repeat;
+    background-size: 400px;
+    background-color: #f8f8f9;
 }
 .words-section.leaves {
-    background: url("https://img0.etsystatic.com/010/0/5254040/il_570xN.440476162_heqm.jpg") left no-repeat;
-    background-size: 450px;
-    background-color: #fafcf9;
+    background: url("../images/shop5.jpg") left no-repeat;
+    background-size: 400px;
+    background-color: #F0F0F0;
 }
 .words-section.right {
     background-position: right;

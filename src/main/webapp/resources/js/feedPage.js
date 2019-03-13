@@ -12,6 +12,10 @@ $(document).ready(function(){
         $('.menu-container').addClass('displayed');
         return false;
     });
+    
+    $('.nav-link.the-home').click(function () {
+        window.location.href= "index";
+    })
 
     // closing the menu-overlay
     $('.close, .menu-container').click(function(){ $('.menu-container').removeClass('displayed'); return false;});

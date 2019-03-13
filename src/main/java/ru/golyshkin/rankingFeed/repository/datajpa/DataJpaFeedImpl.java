@@ -39,4 +39,9 @@ public class DataJpaFeedImpl implements FeedRepository {
     public List<Feed> getAll(int userId) {
         return feedRepository.getAllByUser_Id(userId, SORT_RANKING);
     }
+
+    @Override
+    public List<Feed> findByRanking(int ranking, int userId) {
+        return feedRepository.getAllByRankingAndUser_IdOrderByName(ranking, userId);
+    }
 }

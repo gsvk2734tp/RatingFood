@@ -18,5 +18,7 @@ public interface CrudFeedRepository extends JpaRepository<Feed, Integer> {
 
     Feed getByIdAndUser_Id(@Param("id") int id, @Param("userId") int userId);
 
-    List<Feed> getAllByUser_Id(@Param("id") int userId, Sort sort);
+    List<Feed> getAllByUser_Id(@Param("userId") int userId, Sort sort);
+
+    List<Feed> getAllByRankingAndUser_IdOrderByName(@Param("id") int id, @Param("userId") int userId);
 }

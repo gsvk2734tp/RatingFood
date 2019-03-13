@@ -14,4 +14,6 @@ public interface FeedRepository {
 
     List<Feed> getAll(int userId);
 
+    List<Feed> findByRanking(int ranking, int userId);
+
 }

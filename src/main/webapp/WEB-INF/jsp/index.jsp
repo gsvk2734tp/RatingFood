@@ -53,7 +53,7 @@
       <div id="ic">
         <h2>Login</h2>
         <p>Synth polaroid bitters chillwave pickled. Vegan disrupt tousled.</p>
-        <form name="login-form" id="girisyap" id="sidebar-user-login" method="get" action="feeds">
+        <form name="login-form" id="girisyap" id="sidebar-user-login" method="get" action="MainPage">
 
           <div class="form-group">
             <label class="control-label" for="inputNormal">Username</label>

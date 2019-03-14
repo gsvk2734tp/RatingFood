@@ -27,6 +27,16 @@ public class RootController {
         return "users";
     }
 
+    @GetMapping(value = "/MainPage")
+    public String MainPage() {
+        return "MainPage";
+    }
+
+    @PostMapping(value = "/MainPage")
+    public String MainPagePost() {
+        return "MainPage";
+    }
+
     @GetMapping(value = "/feeds")
     public String feeds() {
         return "feeds";

@@ -20,7 +20,7 @@
       <div id="ic">
         <h2>Sign Up</h2>
         <p>Synth polaroid bitters chillwave pickled. Vegan disrupt tousled.</p>
-        <form id="girisyap" name="signup_form" id="signup_form" method="get" action="users" enctype="multipart/form-data">
+        <form id="girisyap" name="signup_form" id="signup_form" method="post" action="users" enctype="multipart/form-data">
 
           <div class="yarim form-group">
             <label class="control-label" for="inputNormal">Username</label>
@@ -53,7 +53,7 @@
       <div id="ic">
         <h2>Login</h2>
         <p>Synth polaroid bitters chillwave pickled. Vegan disrupt tousled.</p>
-        <form name="login-form" id="girisyap" id="sidebar-user-login" method="get" action="MainPage">
+        <form name="login-form" id="girisyap" id="sidebar-user-login" method="post" action="MainPage">
 
           <div class="form-group">
             <label class="control-label" for="inputNormal">Username</label>

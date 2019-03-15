@@ -1,0 +1,6 @@
+.carousel-inner img {
+    display: block;
+    width: 1200px !important;
+    height: 600px !important;
+    margin: 0 auto;
+}

@@ -3,6 +3,7 @@ package ru.golyshkin.rankingFeed.repository.datajpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.golyshkin.rankingFeed.model.Feed;
 import ru.golyshkin.rankingFeed.repository.FeedRepository;
 
@@ -19,6 +20,7 @@ public class DataJpaFeedImpl implements FeedRepository {
     private CrudUserRepository userRepository;
 
     @Override
+    @Transactional
     public Feed save(Feed feed, int userId) {
         if (!feed.isNew() && get(feed.getId(), userId) == null) {
             return null;

@@ -25,7 +25,7 @@
     <ul class="abs-center nav-options">
         <li class="rela-block nav-link the-home">Home page</li>
         <li class="rela-block nav-link the-menu">The Menu</li>
-        <li class="rela-block nav-link">Beer</li>
+        <li class="rela-block nav-link the-beers">Beer</li>
         <li class="rela-block nav-link">Food</li>
         <li class="rela-block nav-link">Profile</li>
         <li class="rela-block nav-link">Contact Us</li>
@@ -88,7 +88,7 @@
         </form>
     </div>
     <div class="rela-inline option-square">
-        <div class="rela-block option-image"><img class="option-image beer" src="${pageContext.request.contextPath}/resources/images/Kronenbourg.png" alt="#"></div>
+        <div class="rela-block option-image"><img class="option-image beer" src="${pageContext.request.contextPath}/resources/images/Kronebourg.png" alt="#"></div>
         <h2>Kronenbourg 1664</h2>
         <form>
         <div class="stars">

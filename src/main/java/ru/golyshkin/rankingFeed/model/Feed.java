@@ -32,6 +32,10 @@ public class Feed extends AbstractNamedEntity {
 
     }
 
+    public Feed(String name, String description, Integer price, Integer ranking, String photoUrl) {
+        this(null, name, description, price, ranking, photoUrl);
+    }
+
     public Feed(Integer id, String name, String description, Integer price, Integer ranking, String photoUrl) {
         super(id, name);
         this.description = description;

@@ -9,7 +9,6 @@ public interface FeedService {
 
     Feed create(Feed feed, int userId);
 
-
     Feed update(Feed feed, int userId) throws NotFoundException;
 
     void delete(int id, int userId);

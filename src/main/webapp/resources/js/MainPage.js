@@ -15,7 +15,10 @@ $(document).ready(function(){
     
     $('.nav-link.the-home').click(function () {
         window.location.href= "index";
-    })
+    });
+    $('.nav-link.the-beers').click(function () {
+        window.location.href= "beersPage";
+    });
 
     // closing the menu-overlay
     $('.close, .menu-container').click(function(){ $('.menu-container').removeClass('displayed'); return false;});

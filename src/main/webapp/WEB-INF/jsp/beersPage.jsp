@@ -5,7 +5,9 @@
 
 <html>
 <jsp:include page="headTag.jsp"/>
+<link href="<c:url value="/resources/css/stars(rating).css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/beersPage.css" />" rel="stylesheet">
+
 
 <body>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
@@ -78,6 +80,7 @@
     <div class="jumbotron">
         <h1>Beer Rating</h1>
         <p>wewee w ew ew e </p>
+        <a class="fa fa-plus" onclick="addRow()">Add Beer</a>
     </div>
 </div>
 
@@ -91,62 +94,57 @@
             <div class="col-lg-3 border-dark">
                 <img class="img-circle" data-src="holder.js/140x140" alt="140x140"
                      src="${pageContext.request.contextPath}/resources/images/beers/${beer.photoUrl}">
+                <form>
+                    <div class="stars">
+                        <input type="radio" name="star" class="star-1" id="star-1-${beer.name}" />
+                        <label class="star-1" for="star-1-${beer.name}">1</label>
+                        <input type="radio" name="star" class="star-2" id="star-2-${beer.name}" />
+                        <label class="star-2" for="star-2-${beer.name}">2</label>
+                        <input type="radio" name="star" class="star-3" id="star-3-${beer.name}" />
+                        <label class="star-3" for="star-3-${beer.name}">3</label>
+                        <input type="radio" name="star" class="star-4" id="star-4-${beer.name}" />
+                        <label class="star-4" for="star-4-${beer.name}">4</label>
+                        <input type="radio" name="star" class="star-5" id="star-5-${beer.name}" />
+                        <label class="star-5" for="star-5-${beer.name}">5</label>
+                        <span></span>
+                    </div>
+                    <script>
+                        function returnCheck(id, ranking)
+                        {
+                            return (id == ranking);
+                        }
+                        document.getElementById('star-1-${beer.name}').checked = returnCheck(1, ${beer.ranking});
+                        document.getElementById('star-2-${beer.name}').checked = returnCheck(2, ${beer.ranking});
+                        document.getElementById('star-3-${beer.name}').checked = returnCheck(3, ${beer.ranking});
+                        document.getElementById('star-4-${beer.name}').checked = returnCheck(4, ${beer.ranking});
+                        document.getElementById('star-5-${beer.name}').checked = returnCheck(5, ${beer.ranking});
+                    </script>
+                </form>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-6">
                 <h2>${beer.name}</h2>
-                <h2>${beer.price} &#8381;</h2>
+                <h4>${beer.price} &#8381;</h4>
                 <p>${beer.description}</p>
             </div>
-            <div class="col-lg-4">
-                <h3>${beer.ranking}</h3>
+            <div class="col-lg-3">
+                <a onclick='editRow(${beer.id});' class="btn btn-primary a-btn-slide-text">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    <span><strong>Edit</strong></span>
+                </a>
+                <a href="beersPage/delete/${beer.id}" class="btn btn-primary a-btn-slide-text">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <span><strong>Delete</strong></span>
+                </a>
             </div>
         </div>
         <!-- /.row -->
     </c:forEach>
 </div>
 
-<%--Table--%>
-<div class="jumbotron pt-4">
-    <div class="container">
-        <h3 class="text-center">Beer</h3>
-        <a class="fa fa-plus" onclick="addRow()">Add Beer</a>
-        <hr/>
-        <table class="table table-striped table-active" id="datatable">
-            <thead>
-            <tr>
-                <th>Photo</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Rating</th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-            <c:forEach items="${beers}" var="beer">
-                <%--<jsp:useBean id="beer" scope="page" type="ru.golyshkin.rankingFeed.model.Feed"/>--%>
-                <tr>
-                    <td>
-                        <div class="rela-block option-image"><img class="option-image beer"
-                                                                  src="${pageContext.request.contextPath}/resources/images/beers/${beer.photoUrl}"
-                                                                  alt="#"></div>
-                    </td>
-                    <td>${beer.name}</td>
-                    <td>${beer.description}</td>
-                    <td>${beer.price}</td>
-                    <td>${beer.ranking}</td>
-                    <td><a onclick='editRow(${beer.id});'><span class='fa fa-pencil'></span></a></td>
-                    <td><a href="beersPage/delete/${beer.id}"><span class='fa fa-remove'></span></a></td>
-                </tr>
-            </c:forEach>
-        </table>
-    </div>
-</div>
-
 <%--Modal--%>
 <div class="modal fade" tabindex="-1" id="addRow">
     <div class="modal-dialog">
-        <form method="post" action="beersPage/add" autocomplete="off" id="detailsForm">
+        <form method="post" action="beersPage/upload" autocomplete="off" id="detailsForm" enctype="multipart/form-data">
             <div class="modal-content">
 
                 <div class="modal-header">
@@ -156,7 +154,11 @@
 
                 <div class="modal-body">
 
-                    <input type="hidden" id="idAdd" name="id">
+                    <div class="form-group">
+                        <label for="filePhoto" class="col-form-label">Photo</label>
+                        <input type="file" class="form-control" id="filePhoto" name="filePhoto"
+                               placeholder="filePhoto">
+                    </div>
 
                     <div class="form-group">
                         <label for="name" class="col-form-label">Name</label>
@@ -174,6 +176,11 @@
                         <label for="price" class="col-form-label">Price</label>
                         <input type="number" class="form-control" id="price" name="price"
                                placeholder="Price">
+                    </div>
+                    <div class="form-group">
+                        <label for="price" class="col-form-label">Ranking</label>
+                        <input type="number" min="1" max="5" class="form-control" id="ranking" name="ranking"
+                               placeholder="Ranking">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -193,7 +200,7 @@
 
 <div class="modal fade" tabindex="-1" id="editRow">
     <div class="modal-dialog">
-        <form method="post" action="beersPage/add" autocomplete="off" id="detailsFormEdit">
+        <form method="post" action="beersPage/edit" autocomplete="off" id="detailsFormEdit">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Edit beer info</h4>
@@ -201,6 +208,16 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="idAdd" name="id">
+
+                    <div class="col-lg-3 border-dark">
+                        <img class="img-circle" id="EditphotoUrl" data-src="holder.js/140x140" alt="140x140">
+                    </div>
+
+                    <div hidden class="form-group">
+                        <label for="name" class="col-form-label">Photo</label>
+                        <input type="text" class="form-control" id="photoUrlAdd" name="photoUrl"
+                               placeholder="photoUrl">
+                    </div>
 
                     <div class="form-group">
                         <label for="nameAdd" class="col-form-label">Name</label>
@@ -219,7 +236,11 @@
                         <input type="text" class="form-control" id="priceAdd" name="price"
                                placeholder="Price">
                     </div>
-
+                    <div class="form-group">
+                        <label for="price" class="col-form-label">Ranking</label>
+                        <input type="number" min="1" max="5" class="form-control" id="rankingAdd" name="ranking"
+                               placeholder="Price">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">

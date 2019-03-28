@@ -5,9 +5,9 @@ function addRow() {
     $("#addRow").modal();
 }
 
-function returnCheck($rating, $return)
+function returnCheck(id, ranking)
 {
-    return ($rating == $return) ? 'checked="checked"' : NULL;
+    return (id == ranking);
 }
 
 function editRow(id) {
@@ -15,7 +15,9 @@ function editRow(id) {
     $.get(feedAjaxUrl + id, function (data) {
         $.each(data, function (key, value) {
             $('#detailsFormEdit').find("input[name='" + key + "']").val(value);
+            $("#Edit"+key).attr("src","/rankingFeed/resources/images/beers/" + value);
         });
+
         $('#editRow').modal();
     });
 }

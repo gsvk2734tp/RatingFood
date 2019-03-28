@@ -8,9 +8,11 @@
 <link href="<c:url value="/resources/css/stars(rating).css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/beersPage.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/deleteButton.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/addFile.css" />" rel="stylesheet">
 
 <body>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/addFile.js" defer></script>
 <%--<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/beers.js" defer></script>--%>
 
 <%--Navbar--%>
@@ -151,12 +153,18 @@
                     </div>
 
                     <div class="modal-body">
+                        <label for="filePhoto" class="col-form-label">Photo</label>
+                        <input type="file" name="filePhoto" id="filePhoto" class="input-file">
+                        <label for="filePhoto" class="btn btn-tertiary js-labelFile">
+                            <i class="icon fa fa-check"></i>
+                            <span class="js-fileName">Choose a file</span>
+                        </label>
 
-                        <div class="form-group">
-                            <label for="filePhoto" class="col-form-label">Photo</label>
-                            <input type="file" class="form-control" id="filePhoto" name="filePhoto"
-                                   placeholder="filePhoto">
-                        </div>
+                        <%--<div class="form-group">--%>
+                            <%--<label for="filePhoto" class="col-form-label">Photo</label>--%>
+                            <%--<input type="file" class="form-control" id="filePhoto" name="filePhoto"--%>
+                                   <%--placeholder="filePhoto">--%>
+                        <%--</div>--%>
 
                         <div class="form-group">
                             <label for="name" class="col-form-label">Name</label>

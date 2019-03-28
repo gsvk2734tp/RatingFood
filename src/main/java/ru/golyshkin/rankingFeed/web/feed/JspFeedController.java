@@ -43,29 +43,24 @@ public class JspFeedController extends AbstractFeedController {
     }
 
     @PostMapping("/edit")
-    public String addOrUpdate(HttpServletRequest request) {
-        Feed feed = getFeedFromRequest(request);
-        if (request.getParameter("id").isEmpty()) {
-            super.create(feed);
-        } else {
-            super.update(feed, getId(request));
-        }
+    public String editFeed(@RequestParam("id") Integer id,
+                           @RequestParam("name") String name,
+                           @RequestParam("description") String description,
+                           @RequestParam("price") String price,
+                           @RequestParam("ranking") String ranking,
+                           @RequestParam("photoUrl") String photoUrl) {
+        Feed feed = new Feed(name, description, Integer.parseInt(price), Integer.parseInt(ranking), photoUrl);
+        super.update(feed, id);
         return "redirect:/beersPage";
     }
-
-    private int getId(HttpServletRequest request) {
-        String paramId = Objects.requireNonNull(request.getParameter("id"));
-        return Integer.parseInt(paramId);
-    }
-
 
     @PostMapping("/upload")
     public String addBeer(
             @RequestParam("name") String name,
-                          @RequestParam("description") String description,
-                          @RequestParam("price") String price,
-                          @RequestParam("ranking") String ranking,
-            @RequestParam("filePhoto") MultipartFile file) throws IOException, ServletException {
+            @RequestParam("description") String description,
+            @RequestParam("price") String price,
+            @RequestParam("ranking") String ranking,
+            @RequestParam("filePhoto") MultipartFile file) throws IOException, InterruptedException {
         String fileName = file.getOriginalFilename();
         Feed feed = new Feed(name, description, Integer.parseInt(price), Integer.parseInt(ranking), "newTest/" + fileName);
 
@@ -77,13 +72,5 @@ public class JspFeedController extends AbstractFeedController {
         }
         super.create(feed);
         return "redirect:/beersPage";
-    }
-
-    private Feed getFeedFromRequest(HttpServletRequest request) {
-        return new Feed(request.getParameter("name"),
-                request.getParameter("description"),
-                Integer.parseInt(request.getParameter("price")),
-                Integer.parseInt(request.getParameter("ranking")),
-                "beer.png");
     }
 }

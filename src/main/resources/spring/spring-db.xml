@@ -10,31 +10,32 @@
        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+    <!--
+        <jdbc:initialize-database data-source="dataSource" enabled="${db.init}">
+            <jdbc:script location="classpath:db/${jdbc.initLocation}"/>
+            <jdbc:script encoding="utf-8" location="classpath:db/populateDB.sql"/>
+        </jdbc:initialize-database>
+        -->
 
-    <jdbc:initialize-database data-source="dataSource" enabled="${db.init}">
-        <jdbc:script location="classpath:db/${jdbc.initLocation}"/>
-        <jdbc:script encoding="utf-8" location="classpath:db/populateDB.sql"/>
-    </jdbc:initialize-database>
 
+        <tx:annotation-driven/>
 
-    <tx:annotation-driven/>
+        <beans profile="postgres">
+            <context:property-placeholder location="classpath:db/postgres.properties" system-properties-mode="OVERRIDE"/>
 
-    <beans profile="postgres">
-        <context:property-placeholder location="classpath:db/postgres.properties" system-properties-mode="OVERRIDE"/>
+            <bean id="dataSource"
+                  class="org.apache.tomcat.jdbc.pool.DataSource"
+                  p:driverClassName="org.postgresql.Driver"
+                  p:url="${db.url}"
+                  p:username="${db.username}"
+                  p:password="${db.password}"/>
+        </beans>
 
-        <bean id="dataSource"
-              class="org.apache.tomcat.jdbc.pool.DataSource"
-              p:driverClassName="org.postgresql.Driver"
-              p:url="${db.url}"
-              p:username="${db.username}"
-              p:password="${db.password}"/>
-    </beans>
-
-    <beans profile="datajpa">
-        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-              p:dataSource-ref="dataSource"
-              p:packagesToScan="ru.golyshkin.**.model">
-            <!--p:persistenceUnitName="persistenceUnit">-->
+        <beans profile="datajpa">
+            <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+                  p:dataSource-ref="dataSource"
+                  p:packagesToScan="ru.golyshkin.**.model">
+                <!--p:persistenceUnitName="persistenceUnit">-->
 
             <property name="jpaPropertyMap">
                 <map>

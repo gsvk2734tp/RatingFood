@@ -8,7 +8,7 @@
     <bean class="ru.golyshkin.rankingFeed.web.json.JacksonObjectMapper" id="objectMapper" factory-method="getMapper"/>
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="maxUploadSize" value="100000"/>
+        <property name="maxUploadSize" value="10000000"/>
     </bean>
 
     <mvc:annotation-driven conversion-service="conversionService">

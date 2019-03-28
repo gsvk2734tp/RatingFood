@@ -68,7 +68,7 @@
 <div class="rela-block large-section">
     <h1>Rate beer</h1>
     <div class="rela-inline option-square">
-        <div class="rela-block option-image"><img class="option-image beer" src="${pageContext.request.contextPath}/resources/images/hoegaarden1.png" alt="#"></div>
+        <div class="rela-block option-image"><img class="option-image beer" src="${pageContext.request.contextPath}/resources/images/beers/hoegaarden1.png" alt="#"></div>
         <h2>Hoegaarden</h2>
         <br>
         <form>
@@ -88,7 +88,8 @@
         </form>
     </div>
     <div class="rela-inline option-square">
-        <div class="rela-block option-image"><img class="option-image beer" src="${pageContext.request.contextPath}/resources/images/Kronebourg.png" alt="#"></div>
+        <div class="rela-block option-image"><img class="option-image beer" src="${pageContext.request.contextPath}/resources/images/beers/Kronebourg.png" alt="#"></div>
+
         <h2>Kronenbourg 1664</h2>
         <form>
         <div class="stars">
@@ -107,7 +108,7 @@
         </form>
     </div>
     <div class="rela-inline option-square">
-        <div class="rela-block option-image"><img class="option-image beer" src="${pageContext.request.contextPath}/resources/images/LefebvreBelgianKriek.png" alt="#"></div>
+        <div class="rela-block option-image"><img class="option-image beer" src="${pageContext.request.contextPath}/resources/images/beers/LefebvreBelgianKriek.png" alt="#"></div>
         <h2>Belgian Kriek</h2>
         <form>
             <div class="stars">
@@ -126,7 +127,7 @@
         </form>
     </div>
     <div class="rela-inline option-square">
-        <div class="rela-block option-image"><img class="option-image beer" src="${pageContext.request.contextPath}/resources/images/Guinness.png" alt="#"></div>
+        <div class="rela-block option-image"><img class="option-image beer" src="${pageContext.request.contextPath}/resources/images/beers/Guinness.png" alt="#"></div>
         <h2>Guinness</h2>
         <br>
         <form>

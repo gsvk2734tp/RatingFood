@@ -84,39 +84,25 @@
 <div class="container marketing">
 
     <!-- Three columns of text below the carousel -->
-    <div class="row">
-        <div class="col-lg-4">
-            <img class="img-circle" data-src="holder.js/140x140" alt="140x140"
-                 src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+"
-                 style="width: 140px; height: 140px;">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
-                vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
-                cursus magna.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-            <img class="img-circle" data-src="holder.js/140x140" alt="140x140"
-                 src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+"
-                 style="width: 140px; height: 140px;">
-            <h2>Heading</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras
-                mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-            <img class="img-circle" data-src="holder.js/140x140" alt="140x140"
-                 src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+"
-                 style="width: 140px; height: 140px;">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-                fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-        </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
 
+    <c:forEach items="${beers}" var="beer">
+        <div class="row shadow p-3 mb-5 bg-white rounded">
+            <jsp:useBean id="beer" scope="page" type="ru.golyshkin.rankingFeed.model.Feed"/>
+            <div class="col-lg-3 border-dark">
+                <img class="img-circle" data-src="holder.js/140x140" alt="140x140"
+                     src="${pageContext.request.contextPath}/resources/images/beers/${beer.photoUrl}">
+            </div>
+            <div class="col-lg-5">
+                <h2>${beer.name}</h2>
+                <h2>${beer.price} &#8381;</h2>
+                <p>${beer.description}</p>
+            </div>
+            <div class="col-lg-4">
+                <h3>${beer.ranking}</h3>
+            </div>
+        </div>
+        <!-- /.row -->
+    </c:forEach>
 </div>
 
 <%--Table--%>
@@ -138,9 +124,12 @@
             </tr>
             </thead>
             <c:forEach items="${beers}" var="beer">
-                <jsp:useBean id="beer" scope="page" type="ru.golyshkin.rankingFeed.model.Feed"/>
+                <%--<jsp:useBean id="beer" scope="page" type="ru.golyshkin.rankingFeed.model.Feed"/>--%>
                 <tr>
-                    <td>${beer.photoUrl}
+                    <td>
+                        <div class="rela-block option-image"><img class="option-image beer"
+                                                                  src="${pageContext.request.contextPath}/resources/images/beers/${beer.photoUrl}"
+                                                                  alt="#"></div>
                     </td>
                     <td>${beer.name}</td>
                     <td>${beer.description}</td>
@@ -205,12 +194,12 @@
 <div class="modal fade" tabindex="-1" id="editRow">
     <div class="modal-dialog">
         <form method="post" action="beersPage/add" autocomplete="off" id="detailsFormEdit">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Edit beer info</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit beer info</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
                     <input type="hidden" id="idAdd" name="id">
 
                     <div class="form-group">
@@ -231,18 +220,18 @@
                                placeholder="Price">
                     </div>
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <span class="fa fa-close"></span>
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="fa fa-check"></span>
+                        Save Changes
+                    </button>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                    <span class="fa fa-close"></span>
-                    Cancel
-                </button>
-                <button type="submit" class="btn btn-primary">
-                    <span class="fa fa-check"></span>
-                    Save Changes
-                </button>
-            </div>
-        </div>
         </form>
     </div>
 </div>

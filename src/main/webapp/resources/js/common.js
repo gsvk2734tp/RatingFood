@@ -5,6 +5,11 @@ function addRow() {
     $("#addRow").modal();
 }
 
+function returnCheck($rating, $return)
+{
+    return ($rating == $return) ? 'checked="checked"' : NULL;
+}
+
 function editRow(id) {
     // $("#detailsFormEdit").find("input[name='name']").val(123);
     $.get(feedAjaxUrl + id, function (data) {

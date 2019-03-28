@@ -18,12 +18,12 @@ VALUES ('ROLE_USER', 100000),
        ('ROLE_USER', 100001);
 
 INSERT INTO feed (user_id, name,  description, price, ranking, photourl)
-VALUES (100000, 'Kronenbourg 1664', 'Пшеничное пиво', 70, 5, '123'),
-       (100000, 'Guinness', 'Темный  стаут', 130, 2, '123'),
-       (100000, 'Эль Мохнатый Шмель', 'Эль светный нефильтрованный', 40, 3, '123'),
-       (100000, 'Hoegaarden', 'Пшеничное пиво', 70, 4, '123'),
-       (100001, 'Hoegaarden грейпфрут', 'Пшеничное пиво', 70, 4, '123'),
-       (100001, 'Lefebvre Belgian Kriek', 'Красное вишневое', 180, 5, '123');
+VALUES (100000, 'Kronenbourg 1664', 'Пшеничное пиво', 70, 5, 'Kronebourg.png'),
+       (100000, 'Guinness', 'Темный  стаут', 130, 2, 'Guinness.png'),
+       (100000, 'Эль Мохнатый Шмель', 'Эль светный нефильтрованный', 40, 3, 'elMokhnatyiShmel.png'),
+       (100000, 'Hoegaarden', 'Пшеничное пиво', 70, 4, 'hoegaarden1.png'),
+       (100001, 'Hoegaarden грейпфрут', 'Пшеничное пиво', 70, 4, 'hoegaarden2.png'),
+       (100001, 'Lefebvre Belgian Kriek', 'Красное вишневое', 180, 5, 'LefebvreBelgianKriek.png');
 
 INSERT INTO feed_types(type, feed_id)
 VALUES ('TYPE_BEER', 100002),
